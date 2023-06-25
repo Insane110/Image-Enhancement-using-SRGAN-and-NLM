@@ -62,7 +62,7 @@ cv2_imshow(img1)
 
 cv2_imshow(img2)
 
-"""#CREATING MODEL"""
+#CREATING MODEL
 
 #Define blocks to build the generator
 def res_block(ip):
@@ -139,9 +139,6 @@ def create_disc(disc_ip):
     return Model(disc_ip, validity)
 
 #VGG19 
-#We need VGG19 for the feature map obtained by the j-th convolution (after activation) 
-#before the i-th maxpooling layer within the VGG19 network.(as described in the paper)
-#Let us pick the 3rd block, last conv layer. 
 #Build a pre-trained VGG19 model that outputs image features extracted at the
 # third block of the model
 # VGG architecture: https://github.com/keras-team/keras/blob/master/keras/applications/vgg19.py
@@ -309,8 +306,6 @@ for e in range(epochs):
     
     if (e+1) % 5 == 0: #Change the frequency for model saving, if needed
         #Save the generator after every n epochs (Usually 10 epochs)
-        #model_name = os.path.join(checkpoint_dir, ("model_%d" %e))
-        #generator.save_weights(model_name+"_.h5")
         model_name = os.path.join(checkpoint_dir, ("model_%d" %e))
         with open(model_name+"_.json", "w") as json_file:
             json_file.write(generator.to_json())
