@@ -41,6 +41,7 @@ def convert(fpath):
         patch_kw = dict(patch_size=5,      # 5x5 patches
                         patch_distance=6,  # 13x13 search area
                         channel_axis=-1)
+        #Denoising Algorithm (NLM)
         # fast algorithm
         denoise_fast = denoise_nl_means(gen_img, h=0.8 * sigma_est, fast_mode=True,
                                         **patch_kw)
